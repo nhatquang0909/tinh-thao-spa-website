@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tịnh Thảo Spa - Trị liệu thảo mộc Việt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #EEF2ED;
+  --surface: #F8FAF6;
+  --ink: #16241D;
+  --ink-soft: #46584E;
+  --moss: #24402F;
+  --on-moss: #EAF1EA;
+  --sage: #A7BFA9;
+  --lotus: #B8737D;
+  --line: #CBD6CB;
+  --art-top: #DCE6DB;
+  --art-bot: #9DB7A2;
+  --serif: "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101A15; --surface: #17251E; --ink: #E6EEE6; --ink-soft: #A6B8AC;
+    --moss: #2C4B39; --on-moss: #EAF1EA; --sage: #6E8F76; --lotus: #D79AA3;
+    --line: #2A3D32; --art-top: #22382C; --art-bot: #3C5C47;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101A15; --surface: #17251E; --ink: #E6EEE6; --ink-soft: #A6B8AC;
+  --moss: #2C4B39; --on-moss: #EAF1EA; --sage: #6E8F76; --lotus: #D79AA3;
+  --line: #2A3D32; --art-top: #22382C; --art-bot: #3C5C47;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
+img, svg { max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+:focus-visible { outline: 3px solid var(--lotus); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--moss); color: var(--on-moss); padding: 8px 14px; z-index: 50; }
+.skip:focus { left: 8px; }
+.wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
+.serif { font-family: var(--serif); }
+
+/* header */
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 68px; }
+.logo { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; text-decoration: none; letter-spacing: .01em; }
+.nav { display: flex; gap: 24px; font-size: .93rem; }
+.nav a { text-decoration: none; color: var(--ink-soft); padding: 6px 0; border-bottom: 1px solid transparent; }
+.nav a:hover { color: var(--ink); border-bottom-color: var(--lotus); }
+.btn { display: inline-block; font: 500 .95rem/1 var(--sans); padding: 14px 24px; border-radius: 999px; border: 1px solid var(--moss); background: var(--moss); color: var(--on-moss); text-decoration: none; cursor: pointer; transition: background .2s, color .2s; }
+.btn:hover { background: transparent; color: var(--ink); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--moss); color: var(--on-moss); }
+.menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 8px; padding: 8px 12px; font: inherit; cursor: pointer; }
+
+/* hero */
+.hero { padding: 56px 0 0; }
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.6rem, 5.6vw, 4.6rem); line-height: 1.05; letter-spacing: -.01em; max-width: 12em; }
+.hero p.lead { margin-top: 22px; max-width: 34em; color: var(--ink-soft); font-size: 1.08rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.arch { border-radius: 999px 999px 18px 18px; overflow: hidden; aspect-ratio: 400 / 520; max-height: 560px; margin-inline: auto; width: 100%; border: 1px solid var(--line); }
+.arch svg { display: block; width: 100%; height: 100%; }
+.a-sky { fill: url(#sky); }
+.a-sun { fill: var(--lotus); opacity: .8; }
+.a-hill { fill: var(--sage); opacity: .7; }
+.a-hill2 { fill: var(--moss); opacity: .9; }
+.a-water { fill: var(--moss); opacity: .55; }
+.a-ripple { fill: none; stroke: var(--on-moss); stroke-width: 1.2; opacity: .35; }
+.a-petal { fill: var(--surface); stroke: var(--lotus); stroke-width: 1.5; }
+.a-petal-in { fill: var(--lotus); opacity: .55; }
+.a-pad { fill: var(--sage); opacity: .95; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-copy > *:nth-child(2) { animation-delay: .12s; }
+  .hero-copy > *:nth-child(3) { animation-delay: .24s; }
+  .arch { animation: rise 1.1s .1s cubic-bezier(.2,.7,.2,1) both; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* booking bar */
+.booking { margin-top: 44px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.1fr auto; gap: 12px; align-items: end; }
+.field label { display: block; font-size: .82rem; color: var(--ink-soft); margin-bottom: 6px; }
+.field select, .field input { width: 100%; font: inherit; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.toast { grid-column: 1 / -1; font-size: .92rem; color: var(--ink-soft); min-height: 1.4em; }
+
+/* trust */
+.trust { margin-top: 64px; border-block: 1px solid var(--line); }
+.trust ul { list-style: none; margin: 0; padding: 22px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.trust li { font-size: .95rem; color: var(--ink-soft); }
+.trust strong { display: block; color: var(--ink); font-weight: 500; }
+
+/* sections */
+section { padding: 96px 0 0; }
+.sec-head { max-width: 34em; margin-bottom: 40px; }
+.sec-head h2, .split h2, .offer h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.1; }
+.sec-head p, .split .intro { margin-top: 14px; color: var(--ink-soft); }
+
+/* services */
+.split { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
+.split .sticky { position: sticky; top: 100px; }
+.svc { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.svc li { display: grid; grid-template-columns: 1fr auto; gap: 6px 24px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.svc h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; }
+.svc p { color: var(--ink-soft); font-size: .95rem; max-width: 36em; }
+.svc .meta { text-align: right; font-size: .92rem; color: var(--ink-soft); white-space: nowrap; }
+.svc .meta b { display: block; color: var(--ink); font-weight: 500; }
+.link { display: inline-block; margin-top: 26px; font-weight: 500; text-underline-offset: 5px; }
+
+/* packages */
+.pk-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 20px; align-items: stretch; }
+.pk { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 32px 28px; display: flex; flex-direction: column; }
+.pk.main { background: var(--moss); color: var(--on-moss); border-color: var(--moss); border-radius: 100px 100px 14px 14px; padding-top: 56px; }
+.pk h3 { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; }
+.pk .time { font-size: .9rem; opacity: .75; margin-top: 2px; }
+.pk ul { margin: 18px 0 22px; padding-left: 18px; font-size: .95rem; }
+.pk li { margin-bottom: 6px; }
+.pk .price { margin-top: auto; font-family: var(--serif); font-size: 2rem; font-weight: 600; }
+.pk .price small { font: 400 .85rem var(--sans); opacity: .75; }
+.pk .btn { margin-top: 16px; text-align: center; }
+.pk.main .btn { background: var(--on-moss); color: var(--moss); border-color: var(--on-moss); }
+.pk.main .btn:hover { background: transparent; color: var(--on-moss); }
+
+/* process */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; counter-reset: s; }
+.steps li { counter-increment: s; border-top: 2px solid var(--sage); padding-top: 18px; }
+.steps li::before { content: "Bước " counter(s); font-size: .85rem; color: var(--lotus); font-weight: 500; }
+.steps h3 { font-family: var(--serif); font-size: 1.4rem; margin: 4px 0 8px; font-weight: 600; }
+.steps p { font-size: .95rem; color: var(--ink-soft); }
+
+/* team */
+.team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.person { display: grid; grid-template-columns: 96px 1fr; gap: 20px; align-items: center; }
+.avatar { width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 2rem; font-weight: 600; background: var(--sage); color: var(--moss); }
+.person:nth-child(2) .avatar { background: var(--lotus); color: var(--surface); }
+.person:nth-child(3) .avatar { background: var(--moss); color: var(--on-moss); }
+.person h3 { font-size: 1.05rem; font-weight: 500; }
+.person p { font-size: .92rem; color: var(--ink-soft); }
+
+/* reviews */
+.reviews { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; }
+.reviews blockquote { margin: 0; }
+.reviews blockquote p { font-family: var(--serif); font-size: 1.35rem; line-height: 1.4; }
+.reviews blockquote:first-child p { font-size: 1.9rem; }
+.reviews cite { display: block; margin-top: 12px; font-style: normal; font-size: .9rem; color: var(--ink-soft); }
+.note { margin-top: 28px; font-size: .85rem; color: var(--ink-soft); }
+
+/* offer */
+.offer { background: var(--moss); color: var(--on-moss); border-radius: 24px; padding: 56px 48px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; }
+.offer p { margin-top: 12px; opacity: .85; max-width: 32em; }
+.offer .btn { background: var(--on-moss); color: var(--moss); border-color: var(--on-moss); justify-self: end; }
+.offer .btn:hover { background: transparent; color: var(--on-moss); }
+
+/* blog */
+.posts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.posts li { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.posts a { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; text-decoration: none; }
+.posts a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.posts time { font-size: .88rem; color: var(--ink-soft); }
+
+/* footer */
+footer { margin-top: 96px; background: var(--surface); border-top: 1px solid var(--line); padding: 56px 0 40px; }
+.foot { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 32px; }
+.foot h3 { font-size: 1rem; font-weight: 500; margin-bottom: 10px; }
+.foot p, .foot li { font-size: .93rem; color: var(--ink-soft); }
+.foot ul { list-style: none; margin: 0; padding: 0; }
+.copy { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--ink-soft); }
+
+.proof { margin-top: 18px; font-size: .9rem; color: var(--ink-soft); }
+.svc + .note, .split .note { margin-top: 16px; }
+.member { margin-top: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 26px 28px; display: grid; grid-template-columns: 1fr 1.3fr auto; gap: 24px; align-items: center; }
+.member h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; }
+.member p { color: var(--ink-soft); font-size: .95rem; margin-top: 4px; }
+.member ul { list-style: none; margin: 0; padding: 0; font-size: .95rem; }
+.member li { padding: 6px 0; }
+.member li b { display: block; font-weight: 500; }
+.gallery { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 14px; }
+.gallery figure { margin: 0; border-radius: 14px; position: relative; overflow: hidden; }
+.gallery figcaption { position: absolute; left: 16px; bottom: 14px; color: var(--on-moss); font-size: .92rem; font-weight: 500; }
+.g1 { grid-row: 1 / 3; background: linear-gradient(165deg, color-mix(in srgb, var(--moss) 65%, var(--sage)), var(--moss)); border-radius: 100px 100px 14px 14px !important; }
+.g1 figcaption { left: 24px; bottom: 20px; }
+.g2 { background: linear-gradient(160deg, color-mix(in srgb, var(--moss) 60%, var(--lotus)), var(--moss)); }
+.g3 { background: linear-gradient(160deg, color-mix(in srgb, var(--moss) 70%, var(--sage)), var(--moss)); }
+.g4 { grid-column: 2 / 4; background: linear-gradient(120deg, var(--moss), color-mix(in srgb, var(--moss) 65%, var(--sage))); }
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+.faq summary { cursor: pointer; font-family: var(--serif); font-size: 1.3rem; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--sans); font-weight: 300; color: var(--lotus); }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { margin-top: 10px; color: var(--ink-soft); max-width: 38em; }
+.float-bar { display: none; }
+
+@media (max-width: 960px) {
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 20px 16px; }
+  .nav.open { display: flex; }
+  .nav a { padding: 12px 0; }
+  .menu-btn { display: inline-block; }
+  .bar > .btn { display: none; }
+  .hero-grid, .split, .offer { grid-template-columns: 1fr; }
+  .arch { max-width: 380px; }
+  .split .sticky { position: static; }
+  .booking { grid-template-columns: 1fr 1fr; }
+  .booking .btn { grid-column: 1 / -1; }
+  .trust ul, .steps { grid-template-columns: 1fr 1fr; }
+  .pk-grid, .team, .reviews { grid-template-columns: 1fr; }
+  .pk.main { border-radius: 60px 60px 14px 14px; }
+  .foot { grid-template-columns: 1fr 1fr; }
+  .offer { padding: 40px 28px; }
+  .offer .btn { justify-self: start; }
+  section { padding-top: 72px; }
+  .member { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 160px 160px; }
+  .g1 { grid-row: 1; grid-column: 1 / 3; border-radius: 80px 80px 14px 14px !important; }
+  .g4 { grid-column: 1 / 3; }
+  body { padding-bottom: 76px; }
+  .float-bar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; gap: 8px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--surface); border-top: 1px solid var(--line); }
+  .float-bar a { flex: 1; text-align: center; text-decoration: none; padding: 13px 0; border-radius: 999px; border: 1px solid var(--moss); font-weight: 500; font-size: .95rem; color: var(--ink); }
+  .float-bar a.main { flex: 1.6; background: var(--moss); color: var(--on-moss); }
+}
+@media (max-width: 560px) {
+  .booking, .trust ul, .steps, .foot { grid-template-columns: 1fr; }
+  .svc li { grid-template-columns: 1fr; }
+  .svc .meta { text-align: left; }
+  .person { grid-template-columns: 72px 1fr; }
+  .avatar { width: 72px; height: 72px; font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Bỏ qua điều hướng</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="#top">Tịnh Thảo</a>
+    <nav class="nav" id="nav" aria-label="Điều hướng chính">
+      <a href="#dich-vu">Dịch vụ</a>
+      <a href="#lieu-trinh">Liệu trình</a>
+      <a href="#khong-gian">Không gian</a>
+      <a href="#chuyen-gia">Chuyên gia</a>
+      <a href="#voucher">Voucher</a>
+      <a href="#hoi-dap">Hỏi đáp</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+    <a class="btn" href="#dat-lich">Đặt lịch</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <div id="top"></div>
+  <section class="hero" style="padding-top:56px">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Chậm lại một chút, cơ thể sẽ tự nhẹ đi.</h1>
+          <p class="lead">Liệu trình trị liệu bằng thảo mộc Việt trong phòng riêng yên tĩnh. Kỹ thuật viên có chứng chỉ, tinh dầu nguồn gốc rõ ràng, không bán gói ép mua.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#dat-lich">Đặt lịch hôm nay</a>
+            <a class="btn ghost" href="#lieu-trinh">Xem liệu trình</a>
+          </div>
+          <p class="proof">Kỹ thuật viên có chứng chỉ, phòng trị liệu riêng, xác nhận lịch trong 15 phút.</p>
+        </div>
+        <div class="arch">
+          <svg viewBox="0 0 400 520" role="img" aria-label="Minh họa hoa sen nở trên mặt nước lúc hoàng hôn">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" style="stop-color:var(--art-top)"/>
+                <stop offset="1" style="stop-color:var(--art-bot)"/>
+              </linearGradient>
+            </defs>
+            <rect class="a-sky" width="400" height="520"/>
+            <circle class="a-sun" cx="268" cy="190" r="62"/>
+            <path class="a-hill" d="M0 330 Q90 250 190 320 T400 300 V520 H0Z"/>
+            <path class="a-hill2" d="M0 372 Q120 330 230 366 T400 350 V520 H0Z"/>
+            <rect class="a-water" y="392" width="400" height="128"/>
+            <ellipse class="a-ripple" cx="200" cy="452" rx="130" ry="18"/>
+            <ellipse class="a-ripple" cx="200" cy="452" rx="84" ry="11"/>
+            <ellipse class="a-ripple" cx="70" cy="490" rx="60" ry="8"/>
+            <ellipse class="a-ripple" cx="335" cy="482" rx="52" ry="7"/>
+            <ellipse class="a-pad" cx="82" cy="440" rx="46" ry="11"/>
+            <ellipse class="a-pad" cx="326" cy="462" rx="54" ry="12"/>
+            <ellipse class="a-pad" cx="292" cy="418" rx="30" ry="7"/>
+            <g transform="translate(200 440)">
+              <ellipse class="a-petal" cx="0" cy="-58" rx="22" ry="56" transform="rotate(-62)"/>
+              <ellipse class="a-petal" cx="0" cy="-58" rx="22" ry="56" transform="rotate(62)"/>
+              <ellipse class="a-petal" cx="0" cy="-64" rx="24" ry="62" transform="rotate(-32)"/>
+              <ellipse class="a-petal" cx="0" cy="-64" rx="24" ry="62" transform="rotate(32)"/>
+              <ellipse class="a-petal" cx="0" cy="-70" rx="26" ry="68"/>
+              <ellipse class="a-petal-in" cx="0" cy="-52" rx="12" ry="34"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="booking" id="dat-lich" role="group" aria-label="Đặt lịch nhanh">
+        <div class="field">
+          <label for="svc">Dịch vụ</label>
+          <select id="svc">
+            <option>Massage body thư giãn</option>
+            <option>Chăm sóc da mặt</option>
+            <option>Gội đầu dưỡng sinh</option>
+            <option>Xông hơi và tắm thảo mộc</option>
+            <option>Liệu trình cho cặp đôi</option>
+          </select>
+        </div>
+        <div class="field"><label for="day">Ngày</label><input id="day" type="date"></div>
+        <div class="field">
+          <label for="hour">Giờ</label>
+          <select id="hour"><option>09:00</option><option>11:00</option><option>14:00</option><option>16:00</option><option>19:00</option></select>
+        </div>
+        <div class="field"><label for="tel">Số điện thoại</label><input id="tel" type="tel" placeholder="09xx xxx xxx" autocomplete="tel"></div>
+        <button class="btn" id="bookBtn" type="button">Giữ chỗ</button>
+        <p class="toast" id="toast" role="status"></p>
+      </div>
+
+      <div class="trust">
+        <ul>
+          <li><strong>Thảo mộc trồng và sơ chế tại Việt Nam</strong>Gừng, sả, bồ kết, lá trầu không</li>
+          <li><strong>Kỹ thuật viên có chứng chỉ</strong>Đào tạo bài bản, tối thiểu 3 năm kinh nghiệm</li>
+          <li><strong>Phòng trị liệu riêng</strong>Khăn và dụng cụ tiệt trùng sau mỗi khách</li>
+          <li><strong>Xác nhận lịch trong 15 phút</strong>Qua điện thoại hoặc Zalo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="dich-vu">
+    <div class="wrap split">
+      <div class="sticky">
+        <h2>Dịch vụ tại Tịnh Thảo</h2>
+        <p class="intro">Mỗi dịch vụ đều bắt đầu bằng vài phút tư vấn để chọn lực tay và mùi hương phù hợp với bạn.</p>
+        <a class="link" href="#bang-gia">Xem bảng giá đầy đủ</a>
+      </div>
+      <div><ul class="svc">
+        <li><div><h3>Massage body thư giãn</h3><p>Kỹ thuật xoa bóp kết hợp tinh dầu sả chanh, giúp giảm mỏi vai gáy và lưng.</p></div><div class="meta"><b>Từ 380.000đ</b>60 phút</div></li>
+        <li><div><h3>Chăm sóc da mặt</h3><p>Làm sạch, đắp mặt nạ thảo mộc và massage mặt. Phù hợp da nhạy cảm.</p></div><div class="meta"><b>Từ 420.000đ</b>75 phút</div></li>
+        <li><div><h3>Gội đầu dưỡng sinh</h3><p>Bồ kết, gừng và massage đầu vai. Dành cho người làm việc văn phòng nhiều giờ.</p></div><div class="meta"><b>Từ 250.000đ</b>45 phút</div></li>
+        <li><div><h3>Xông hơi và tắm thảo mộc</h3><p>Phòng riêng, nước lá thảo mộc theo mùa, dùng riêng hoặc kèm massage.</p></div><div class="meta"><b>Từ 300.000đ</b>40 phút</div></li>
+        <li><div><h3>Liệu trình cho cặp đôi</h3><p>Hai giường cạnh nhau trong một phòng, trà thảo mộc và trái cây sau buổi trị liệu.</p></div><div class="meta"><b>Từ 1.250.000đ</b>90 phút</div></li>
+      </ul>
+        <p class="note">Giá chưa gồm phụ thu (nếu có). Tịnh Thảo báo rõ trước khi bắt đầu, không phát sinh sau buổi trị liệu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="lieu-trinh">
+    <div class="wrap">
+      <div class="sec-head" id="bang-gia">
+        <h2>Liệu trình gợi ý</h2>
+        <p>Ba lựa chọn phổ biến nhất. Bạn có thể đổi thành phần khi tư vấn.</p>
+      </div>
+      <div class="pk-grid">
+        <article class="pk">
+          <h3>Nhẹ vai gáy</h3>
+          <p class="time">60 phút</p>
+          <ul><li>Ngâm chân thảo mộc</li><li>Massage vai gáy và lưng</li><li>Trà gừng mật ong</li></ul>
+          <p class="price">490.000đ</p>
+          <a class="btn ghost" href="#dat-lich">Chọn liệu trình</a>
+        </article>
+        <article class="pk main">
+          <h3>Thư giãn toàn thân</h3>
+          <p class="time">90 phút. Được chọn nhiều nhất</p>
+          <ul><li>Xông hơi thảo mộc 15 phút</li><li>Massage body toàn thân</li><li>Chăm sóc da mặt cơ bản</li><li>Trà và trái cây theo mùa</li></ul>
+          <p class="price">890.000đ <small>thay vì 1.050.000đ</small></p>
+          <a class="btn" href="#dat-lich">Chọn liệu trình</a>
+        </article>
+        <article class="pk">
+          <h3>Phục hồi sau tuần dài</h3>
+          <p class="time">120 phút</p>
+          <ul><li>Tắm thảo mộc</li><li>Gội đầu dưỡng sinh</li><li>Massage body và bấm huyệt chân</li></ul>
+          <p class="price">1.190.000đ</p>
+          <a class="btn ghost" href="#dat-lich">Chọn liệu trình</a>
+        </article>
+      </div>
+      <div class="member">
+        <div>
+          <h3>Thẻ thành viên</h3>
+          <p>Mua gói nhiều buổi để tiết kiệm hơn và giữ lịch cố định hằng tuần.</p>
+        </div>
+        <ul>
+          <li><b>Gói 6 buổi massage body 60 phút</b> 1.900.000đ (mua 5 tặng 1)</li>
+          <li><b>Gói 10 buổi gội đầu dưỡng sinh</b> 2.200.000đ (tiết kiệm 300.000đ)</li>
+        </ul>
+        <a class="btn ghost" href="#dat-lich">Hỏi về thẻ</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="trai-nghiem">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Một buổi trị liệu diễn ra như thế nào</h2>
+        <p>Bạn biết trước từng bước, không có bất ngờ về giá hay dịch vụ thêm.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Tư vấn</h3><p>Chọn liệu trình, lực tay và mùi hương. Báo trước nếu bạn có vùng đau hoặc dị ứng.</p></li>
+        <li><h3>Ngâm chân chào đón</h3><p>Nước ấm thảo mộc giúp cơ thể làm quen với nhịp chậm.</p></li>
+        <li><h3>Trị liệu</h3><p>Kỹ thuật viên thực hiện đúng liệu trình đã chọn trong phòng riêng.</p></li>
+        <li><h3>Nghỉ ngơi</h3><p>Trà thảo mộc và hướng dẫn tự chăm sóc tại nhà nếu bạn cần.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="chuyen-gia">
+    <div class="wrap">
+      <div class="sec-head"><h2>Những người sẽ chăm sóc bạn</h2></div>
+      <div class="team">
+        <div class="person"><div class="avatar" aria-hidden="true">H</div><div><h3>Nguyễn Thu Hà</h3><p>Trưởng kỹ thuật viên, 9 năm kinh nghiệm massage trị liệu</p></div></div>
+        <div class="person"><div class="avatar" aria-hidden="true">L</div><div><h3>Trần Ngọc Lan</h3><p>Chuyên viên chăm sóc da, chứng chỉ thẩm mỹ da</p></div></div>
+        <div class="person"><div class="avatar" aria-hidden="true">M</div><div><h3>Lê Minh Khang</h3><p>Kỹ thuật viên bấm huyệt và dưỡng sinh, 6 năm kinh nghiệm</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="khong-gian">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Không gian trị liệu</h2>
+        <p>Phòng riêng, ánh sáng dịu, mùi thảo mộc nhẹ. Bạn xem trước nơi mình sẽ nghỉ ngơi.</p>
+      </div>
+      <div class="gallery">
+        <figure class="g1"><figcaption>Phòng trị liệu đơn</figcaption></figure>
+        <figure class="g2"><figcaption>Phòng đôi</figcaption></figure>
+        <figure class="g3"><figcaption>Khu ngâm chân thảo mộc</figcaption></figure>
+        <figure class="g4"><figcaption>Sảnh đón khách</figcaption></figure>
+      </div>
+      <p class="note">Khối màu là ảnh giữ chỗ. Thay bằng ảnh không gian thật khi triển khai.</p>
+    </div>
+  </section>
+
+  <section id="danh-gia">
+    <div class="wrap">
+      <div class="reviews">
+        <blockquote><p>Mình làm văn phòng, vai gáy cứng suốt. Ra khỏi phòng trị liệu là ngủ ngon luôn tối đó.</p><cite>Phương Anh, khách hàng thường xuyên</cite></blockquote>
+        <blockquote><p>Hai vợ chồng đi phòng đôi, được tư vấn kỹ và không bị mời mua thêm gói.</p><cite>Anh Quang, khách lần đầu</cite></blockquote>
+        <blockquote><p>Da mình nhạy cảm, bạn kỹ thuật viên hỏi rất kỹ trước khi đắp mặt nạ.</p><cite>Thanh Trúc, khách chăm sóc da</cite></blockquote>
+      </div>
+      <p class="note">Nội dung đánh giá là dữ liệu mẫu cho bản demo, thay bằng phản hồi thật khi triển khai.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="offer">
+        <div>
+          <h2>Lần đầu đến Tịnh Thảo? Giảm 20% liệu trình 90 phút.</h2>
+          <p>Áp dụng cho khách mới, đặt lịch trực tuyến trong tháng này.</p>
+        </div>
+        <a class="btn" href="#dat-lich">Nhận ưu đãi</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="voucher">
+    <div class="wrap split">
+      <div class="sticky">
+        <h2>Tặng một buổi nghỉ ngơi</h2>
+        <p class="intro">Voucher dùng cho mọi dịch vụ, gửi qua Zalo hoặc email, hạn dùng 6 tháng.</p>
+        <a class="btn" href="#dat-lich" style="margin-top:22px">Mua voucher</a>
+      </div>
+      <ul class="svc">
+        <li><div><h3>Voucher 500.000đ</h3><p>Phù hợp một buổi gội đầu dưỡng sinh hoặc massage ngắn.</p></div><div class="meta"><b>500.000đ</b>Hạn 6 tháng</div></li>
+        <li><div><h3>Voucher 1.000.000đ</h3><p>Đủ cho liệu trình toàn thân 90 phút.</p></div><div class="meta"><b>1.000.000đ</b>Hạn 6 tháng</div></li>
+        <li><div><h3>Voucher cặp đôi 2.000.000đ</h3><p>Dùng cho liệu trình phòng đôi kèm trà và trái cây.</p></div><div class="meta"><b>2.000.000đ</b>Hạn 6 tháng</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="wrap split">
+      <div class="sticky">
+        <h2>Góc chăm sóc</h2>
+        <p class="intro">Những điều nhỏ bạn có thể làm tại nhà giữa hai buổi trị liệu.</p>
+      </div>
+      <ul class="posts">
+        <li><a href="#blog">Ngồi máy tính nhiều giờ: 5 động tác giãn vai gáy trong 3 phút</a><time datetime="2026-09-20">20/09/2026</time></li>
+        <li><a href="#blog">Tắm lá thảo mộc tại nhà: nên dùng loại nào theo mùa</a><time datetime="2026-09-12">12/09/2026</time></li>
+        <li><a href="#blog">Lần đầu đi spa: nên chuẩn bị gì và hỏi gì trước khi bắt đầu</a><time datetime="2026-09-03">03/09/2026</time></li>
+      </ul>
+    </div>
+  </section>
+  <section id="hoi-dap">
+    <div class="wrap split">
+      <div class="sticky">
+        <h2>Câu hỏi thường gặp</h2>
+        <p class="intro">Chưa thấy câu trả lời? Gọi hoặc nhắn Zalo, chúng tôi phản hồi trong giờ mở cửa.</p>
+      </div>
+      <div class="faq">
+        <details><summary>Tôi có cần đặt lịch trước không?</summary><p>Nên đặt trước để có phòng riêng đúng giờ bạn muốn. Khách đến không hẹn vẫn được phục vụ nếu còn phòng.</p></details>
+        <details><summary>Tôi có thể hủy hoặc đổi lịch không?</summary><p>Được. Báo trước ít nhất 4 giờ để đổi hoặc hủy miễn phí.</p></details>
+        <details><summary>Giá trên website đã là giá cuối chưa?</summary><p>Đây là giá từ. Nếu có phụ thu, chúng tôi báo rõ khi tư vấn, trước khi bắt đầu.</p></details>
+        <details><summary>Tôi có bệnh nền hoặc đang mang thai thì dùng được không?</summary><p>Vui lòng báo khi đặt lịch. Kỹ thuật viên sẽ tư vấn liệu trình phù hợp, và bạn nên hỏi thêm bác sĩ nếu cần.</p></details>
+        <details><summary>Thanh toán bằng cách nào?</summary><p>Tiền mặt, chuyển khoản hoặc thẻ tại quầy.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="lien-he">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top">Tịnh Thảo</a>
+        <p style="margin-top:10px;max-width:22em">Trị liệu thảo mộc, trở về sự tĩnh lặng. Phòng riêng, đặt lịch trước để được phục vụ chu đáo.</p>
+      </div>
+      <div><h3>Địa chỉ</h3><p>12 đường Hoa Sen<br>(thay bằng địa chỉ thật)</p></div>
+      <div><h3>Giờ mở cửa</h3><p>Thứ 2 đến Chủ nhật<br>9:00 đến 21:30</p></div>
+      <div>
+        <h3>Liên hệ</h3>
+        <ul><li>Hotline: 0900 000 000</li><li>Zalo: 0900 000 000</li><li>Facebook, Instagram</li></ul>
+      </div>
+    </div>
+    <p class="copy">Bản demo bố cục Homepage. Nội dung, giá và tên thương hiệu là dữ liệu giả định.</p>
+  </div>
+</footer>
+
+<div class="float-bar">
+  <a href="tel:0900000000">Gọi</a>
+  <a href="https://zalo.me/0900000000">Zalo</a>
+  <a class="main" href="#dat-lich">Đặt lịch</a>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+  document.getElementById('bookBtn').addEventListener('click', function () {
+    var tel = document.getElementById('tel').value.trim();
+    var toast = document.getElementById('toast');
+    if (!tel) { toast.textContent = 'Vui lòng nhập số điện thoại để chúng tôi xác nhận lịch.'; return; }
+    toast.textContent = 'Đã ghi nhận yêu cầu. Tịnh Thảo sẽ gọi xác nhận trong 15 phút (bản demo, chưa gửi dữ liệu).';
+  });
+})();
+</script>
+</body>
+</html>
